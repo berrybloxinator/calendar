@@ -7,27 +7,37 @@ const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
 ];
 
 let currentDate = new Date();
+const originalDate = currentDate;
+
+function load() {
+    $('#month').html(`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`);
+    $('#day-name').html(dayNames[currentDate.getDay()]);
+    $('#day-num').html(currentDate.getDate());
+    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    populateCalendar();
+}
 
 //https://www.geeksforgeeks.org/how-to-get-the-number-of-days-in-a-specified-month-using-javascript/
 function daysInMonth (month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-function resetGrayedOut() {
+function reset() {
     for (let i = 0; i < 42; i++) {
-        $(`#td${i}`).removeClass('grayedOut');
+        $(`#td${i}`).removeClass('grayedOut currentDay');
     }
 }
 
 function click() {
     $('#month').html(`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`);
     $('#remove').css('visibility', 'hidden');
-    resetGrayedOut();
+    reset();
     populateCalendar();
 }
 
 function populateCalendar() {
     let tempDay = currentDate.getDay();
+    let originalDay = tempDay;
     let tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
     tempDate.setDate(daysInMonth(tempDate.getMonth(), tempDate.getFullYear()) - (tempDay - 1));
     let tempGetDate = tempDate.getDate();
@@ -44,6 +54,10 @@ function populateCalendar() {
             restOfDays = 42 - tempDay;
         }
 
+        if (originalDate.getDate() - 1 === i) {
+            $(`#td${i + originalDay}`).addClass('currentDay');
+        }
+
         $(`#td${tempDay}`).html(i + 1);
         tempDay++;
     }
@@ -58,12 +72,9 @@ function populateCalendar() {
     }
 }
 
-function load() {
-    $('#month').html(`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`);
-    $('#day-name').html(dayNames[currentDate.getDay()]);
-    $('#day-num').html(currentDate.getDate());
-    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    populateCalendar();
+function resetToOriginalDate() {
+    currentDate = new Date(originalDate.getFullYear(), originalDate.getMonth(), 1);
+    click();
 }
 
 function clickLeft() {
