@@ -67,3 +67,5 @@ html, body {
                 width: 100%; }
               .container .box #right #bottom-right table tbody tr .grayedOut {
                 color: #808080; }
+            .container .box #right #bottom-right table tbody #remove {
+              visibility: hidden; }
