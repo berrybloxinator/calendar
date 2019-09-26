@@ -59,8 +59,11 @@ html, body {
             justify-content: space-between; }
             .container .box #right #bottom-right table tbody tr {
               display: flex;
-              justify-content: space-between;
-              margin: 0 10px; }
+              justify-content: space-between; }
               .container .box #right #bottom-right table tbody tr td {
                 cursor: pointer;
-                padding: 5px; }
+                padding: 5px;
+                text-align: center;
+                width: 100%; }
+              .container .box #right #bottom-right table tbody tr .grayedOut {
+                color: #808080; }
