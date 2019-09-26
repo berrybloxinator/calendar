@@ -28,6 +28,11 @@ html, body {
       align-items: center;
       justify-content: center;
       font-size: 55px; }
+      .container .box #left button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #ffde03;
+        cursor: pointer; }
     .container .box #right {
       height: 400px;
       width: 400px; }
@@ -64,7 +69,8 @@ html, body {
                 cursor: pointer;
                 padding: 5px;
                 text-align: center;
-                width: 100%; }
+                width: 100%;
+                border-radius: 5px; }
               .container .box #right #bottom-right table tbody tr .grayedOut {
                 color: #808080; }
               .container .box #right #bottom-right table tbody tr .currentDay {
