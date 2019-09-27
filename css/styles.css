@@ -28,32 +28,39 @@ html, body {
       align-items: center;
       justify-content: center;
       font-size: 55px; }
-      .container .box #left button {
-        padding: 10px 20px;
-        border-radius: 5px;
-        background-color: #ffde03;
-        cursor: pointer; }
     .container .box #right {
       height: 400px;
       width: 400px; }
       .container .box #right #top-right {
-        height: 40px;
-        background-color: #404040;
-        border-radius: 0 5px 0 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between; }
-        .container .box #right #top-right i {
-          margin: 0 10px;
-          padding: 10px;
-          color: #C0C0C0;
-          cursor: pointer;
-          font-size: 18px; }
-        .container .box #right #top-right #month {
-          color: #C0C0C0; }
+        border-radius: 0 5px 0 0; }
+        .container .box #right #top-right .top {
+          background-color: #404040;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between; }
+          .container .box #right #top-right .top i {
+            margin: 0 10px;
+            padding: 10px;
+            color: #C0C0C0;
+            cursor: pointer;
+            font-size: 18px; }
+          .container .box #right #top-right .top #month {
+            color: #C0C0C0; }
+        .container .box #right #top-right .bottom {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          height: 32px; }
+          .container .box #right #top-right .bottom button {
+            height: 20px;
+            margin: 5px;
+            border-radius: 5px;
+            background-color: #ffde03;
+            cursor: pointer; }
       .container .box #right #bottom-right {
         color: #C0C0C0;
-        height: calc(100% - 40px); }
+        height: calc(100% - 70px); }
         .container .box #right #bottom-right table {
           height: 100%;
           width: 100%; }

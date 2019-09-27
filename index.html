@@ -16,15 +16,19 @@
 <div class='container'>
     <div class='box'>
         <div id='left'>
-            <button onclick='resetToOriginalDate()'>Reset to Original Date</button>
             <div id='day-name'></div>
             <div id='day-num'></div>
         </div>
         <div id='right'>
             <div id='top-right'>
-                <i class="fas fa-angle-left" onclick='clickLeft()'></i>
-                <div id='month'></div>
-                <i class="fas fa-angle-right" onclick='clickRight()'></i>
+                <div class='top'>
+                    <i class="fas fa-angle-left" onclick='clickLeft()'></i>
+                    <div id='month'></div>
+                    <i class="fas fa-angle-right" onclick='clickRight()'></i>
+                </div>
+                <div class='bottom'>
+                    <button onclick='resetToOriginalDate()'>Reset</button>
+                </div>
             </div>
             <div id='bottom-right'>
                 <table>

@@ -1,7 +1,8 @@
+//Month and day names are needed because getMont() and getDay() return
+//numbers and we need the names to display to the user
 const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
-
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
     'Thursday', 'Friday', 'Saturday'
 ];
@@ -10,7 +11,7 @@ let currentDate = new Date();
 const originalDate = currentDate;
 
 function load() {
-    $('#month').html(`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`);
+    $('#month').append(`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`);
     $('#day-name').html(dayNames[currentDate.getDay()]);
     $('#day-num').html(currentDate.getDate());
     currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
@@ -37,11 +38,15 @@ function click() {
 
 function populateCalendar() {
     let tempDay = currentDate.getDay();
-    let originalDay = tempDay;
     let tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
     tempDate.setDate(daysInMonth(tempDate.getMonth(), tempDate.getFullYear()) - (tempDay - 1));
     let tempGetDate = tempDate.getDate();
     let restOfDays;
+
+    if (currentDate.getMonth() === originalDate.getMonth() &&
+    currentDate.getFullYear() === originalDate.getFullYear()) {
+        $(`#td${tempDay + originalDate.getDate() - 1}`).addClass('currentDay');
+    }
 
     for (let i = 0; i < tempDay; i++) {
         $(`#td${i}`).html(tempGetDate).addClass('grayedOut');
@@ -52,10 +57,6 @@ function populateCalendar() {
         if (tempDay === 35) {
             $('#remove').css('visibility', 'visible');
             restOfDays = 42 - tempDay;
-        }
-
-        if (originalDate.getDate() - 1 === i) {
-            $(`#td${i + originalDay}`).addClass('currentDay');
         }
 
         $(`#td${tempDay}`).html(i + 1);
